@@ -1,13 +1,8 @@
 # galactus-store
 App creada con el grupo ed lenguaje de programacion java web sise
 
-### Integrantes
-- Diego Baes
-- Juan Marquina
-
-### Alcance - Explicacion del Proyecto
-asdasd
-
+Alumno: Castro Rojas Jorge Luis
+Video: 
 ### Diseño de la BD
 
 
