@@ -25,7 +25,7 @@ public class CategoriaServlet extends HttpServlet {
 
     public CategoriaServlet() {
         super();
-        categoriaService = new CategoriaServiceImpl();
+        categoriaService = new CategoriaServiceImpl(); //
     }
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

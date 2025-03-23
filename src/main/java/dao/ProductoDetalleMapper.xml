@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+    PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="dao.ProductoDetalleMapper">
+
+    
+    <resultMap id="ProductoDetalleMap" type="models.ProductoDetalle">
+    <id column="id_producto" property="idProducto"/>
+    <result column="marca" property="marca"/>
+    <result column="subcategoria" property="subcategoria"/>
+    <result column="proveedor" property="proveedor"/>
+    <result column="codigo_interno" property="codigoInterno"/>
+    <result column="codigo_externo" property="codigoExterno"/>
+    <result column="nombre" property="nombre"/>
+    <result column="descripcion" property="descripcion"/>
+    <result column="modelo" property="modelo"/>
+    <result column="tiempo_garantia_meses" property="tiempoGarantiaMeses"/>
+    <result column="precio" property="precio"/>
+    <result column="stock" property="stock"/>
+    <result column="imagen_url" property="imagenUrl"/>
+    </resultMap>
+
+  
+<select id="listarDetallePorIdProducto" parameterType="int" resultMap="ProductoDetalleMap">
+SELECT
+	 		(
+				SELECT pi.imagen_url 
+				FROM producto_imagenes pi
+				WHERE pi.estado_auditoria = '1' AND pi.id_producto = p.id_producto
+				ORDER BY pi.fecha_creacion ASC
+				LIMIT 1
+			) imagen_url, 
+			p.id_producto, m.nombre as marca, s.nombre as subcategoria , pro.nombres as proveedor, p.codigo_interno,
+	 		p.codigo_externo, p.nombre, p.descripcion, p.modelo, p.tiempo_garantia_meses,
+	 		p.precio, p.stock
+ 		FROM productos p inner join subcategorias s 
+		ON p.id_subcategoria = s.id_subcategoria 
+		inner join marcas m on p.id_marca = m.id_marca 
+		inner join proveedores pro on p.id_proveedor = pro.id_proveedor
+ 		WHERE p.estado_auditoria = '1' and p.id_producto = #{idProducto}
+ 	</select>
+
+  
+  <select id="listarImagenesPorIdProducto" parameterType="int">
+    SELECT
+    imagen_url
+    FROM producto_imagenes 
+    WHERE id_producto = #{idProducto} AND estado_auditoria = '1'
+    ORDER BY fecha_creacion ASC
+</select>
+
+
+
+</mapper>

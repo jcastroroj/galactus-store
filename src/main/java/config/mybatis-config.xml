@@ -12,7 +12,7 @@
                 <property name="driver" value="org.postgresql.Driver"/>
                 <property name="url" value="jdbc:postgresql://localhost/BD_GALACTUS_STORE"/>
                 <property name="username" value="postgres"/>
-                <property name="password" value="root"/>
+                <property name="password" value="123456"/>
             </dataSource>
         </environment>
     </environments>
@@ -24,5 +24,6 @@
         <mapper resource="dao/CategoriaMapper.xml"/>
         <mapper resource="dao/SubcategoriaMapper.xml"/>
         <mapper resource="dao/ProductoMapper.xml"/>
+        <mapper resource="dao/ProductoDetalleMapper.xml"/>
     </mappers>
 </configuration>

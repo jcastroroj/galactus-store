@@ -29,7 +29,9 @@
 		<div class="flex w-full justify-center p-4 gap-4 flex-wrap">
 			<% if (productos != null && !productos.isEmpty()) { %>
 				<% for(Producto producto: productos) { %>
-					<a class="flex bg-gray-200 w-[200px] justify-center flex-col p-4 gap-1 items-center rounded-md border border-gray-300 border-solid hover:border-green-600 cursor-pointer">
+				
+					<a href="/galactus-store/productodetalles?idProducto=<%= producto.getIdProducto() %>"
+					class="flex bg-gray-200 w-[200px] justify-center flex-col p-4 gap-1 items-center rounded-md border border-gray-300 border-solid hover:border-green-600 cursor-pointer">
 						<img class="rounded-sm" src="<%= producto.getImagenUrl() != null ? producto.getImagenUrl()  : Constants.IMAGEN_PRODUCTO_DEFAULT %>" width="150px">
 						<span class="w-full justify-between items-end flex">
 							<span class="text-xs text-left text-center text-green-600 font-medium"><%= producto.getCodigoInterno() %></span>
